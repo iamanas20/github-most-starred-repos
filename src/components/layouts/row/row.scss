@@ -1,0 +1,65 @@
+.row{
+  background-color: white;
+  border-radius: 6px;
+	box-shadow: 0 0 0 1px rgba(63,63,68,0.05), 0 1px 3px 0 rgba(63,63,68,0.15);
+	display: flex;
+	flex-wrap: nowrap;
+	align-items: center;
+	padding: 20px;
+	
+	.avatar-container{
+		height: 100%;
+		width: 150px;
+		margin-right: 20px;
+		.repo-avatar{
+			max-height: 100%;
+			max-width: 100%;
+			display: block;
+			border-radius: 6px;
+		}
+	}
+
+	.content-container{
+		text-align: left;
+		.title{
+			margin-top: 0;
+			padding: 0;
+		}
+		.text{
+			margin-bottom: 28px;
+			padding: 0;
+		}
+		
+		.bottom-info-container{
+			flex-grow: 1;
+		}
+
+		.bottom-info{
+			margin-top: 16px;
+			display: flex;
+			flex-grow: 1;
+			flex-wrap: nowrap;
+			align-items: center;
+			.info-badge{
+				padding: 5px 10px;
+				font-size: 13px;
+				border-radius: 3px;
+				&:not(:last-child){
+					margin-right: 10px;
+				}
+			}
+			.stars{
+				background: #ffed9d;
+			}
+			.issues{
+				background: #ffbcbc;
+			}
+			.submit-info{
+				margin-left: 20px;
+				font-size: 13px;
+			}
+		}
+		
+	}
+
+}
