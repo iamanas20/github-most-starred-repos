@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import List from '../list/index.js';
+import List from '../list/index';
 import './page.scss';
 
 class Page extends Component {

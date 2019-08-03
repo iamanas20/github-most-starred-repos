@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { fetchRepos } from '../../../actions/actions';
 import React, {Component} from "react";
-import Row from '../row/index.js';
+import Row from '../row/index';
 import './list.scss';
 import abbreviateNumber from './abbreviateNumber';
 import getLinks from './getLinks';
