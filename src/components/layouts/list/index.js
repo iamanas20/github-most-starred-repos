@@ -1,17 +1,26 @@
-import React from "react";
+import { connect } from 'react-redux';
+import { fetchRepos } from '../../../actions/actions';
+import React, {Component} from "react";
 import Row from '../row/index.js';
 import './list.scss';
-
+import abbreviateNumber from './abbreviateNumber';
+import getLinks from './getLinks';
+import getDate from './getDate';
+import optimizeHeadersTitle from './optimizeHeadersTitle';
 var moment = require('moment');
 
-function List(props) {
-	return(
-		<div className="list">
-			{
-				(props.items !== undefined) &&
-				props.items.map(function(item, i){
-					console.log(item);
-					return (
+class List extends Component {
+
+  componentDidMount(url = "https://api.github.com/search/repositories?q=created:>" + getDate() + "&sort=stars&order=desc") {
+    this.props.fetchRepos(url);
+  }
+
+	render() {
+		return(
+			<div className="list">
+				{
+					(this.props.repos.repos.repos !== undefined) &&
+					this.props.repos.repos.repos.map((item, i) => 
 						<Row 
 							key={i}
 							avatar={item.owner.avatar_url}
@@ -22,30 +31,35 @@ function List(props) {
 							date={moment(item.created_at, "YYYYMMDD").fromNow()}
 							owner={item.owner.login}
 						/>
-					) 
-				})
-			}
-		</div>
-	)
-}
-
-function abbreviateNumber(value) {
-	var newValue = value;
-	if (value >= 1000) {
-			var suffixes = ["", "k", "m", "b","t"];
-			var suffixNum = Math.floor( (""+value).length/3 );
-			var shortValue = '';
-			for (var precision = 2; precision >= 1; precision--) {
-				shortValue = parseFloat( (suffixNum != 0 ? (value / Math.pow(1000,suffixNum) ) : value).toPrecision(precision));
-				var dotLessShortValue = (shortValue + '').replace(/[^a-zA-Z 0-9]+/g,'');
-				if (dotLessShortValue.length <= 2) { break; }
-			}
-			if (shortValue % 1 != 0)  {
-				shortValue = shortValue.toFixed(1)
-			};
-		newValue = shortValue+suffixes[suffixNum];
+					)
+				}
+				<div className="pagination">
+					{
+						(this.props.repos.repos.headers !== undefined) && 
+						getLinks(this.props.repos.repos.headers.get('link')).map((item, i) => 
+							<button onClick={e => this.props.fetchRepos(item.url)} key={i}>
+								{optimizeHeadersTitle(item.title)}
+							</button>
+						)
+					}
+				</div>
+			</div>
+		)
 	}
-	return newValue;
 }
 
-export default List;
+function mapDispatchToProps(dispatch, url = "https://api.github.com/search/repositories?q=created:>" + getDate() + "&sort=stars&order=desc") {
+  return {
+    fetchRepos: function(url) {
+      dispatch(fetchRepos(url));
+    }
+  };
+}
+
+function mapStateToProps(state) {
+  return {
+    repos: state.repos,
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(List);

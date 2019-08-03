@@ -15,7 +15,8 @@ function reposReducer(state = INITIAL_STATE, action) {
     case 'FETCH_REPOS_SUCCESS':
       return Object.assign({}, state, {
         isFetching: false,
-        repos: action.repos
+        repos: action.repos,
+        headers: action.headers,
       });
     case 'FETCH_REPOS_FAILURE':
       return Object.assign({}, state, {
