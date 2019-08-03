@@ -1,4 +1,4 @@
-export default function getLinks(link) {
+const getLinks = (link) => {
   const links = link.split(",")
   const urls = links.map(a=> {
     return {
@@ -8,3 +8,5 @@ export default function getLinks(link) {
   })
   return urls;
 }
+
+export default getLinks

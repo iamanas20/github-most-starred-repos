@@ -50,18 +50,14 @@ class List extends Component {
   }
 }
 
-function mapDispatchToProps(dispatch, url = default_url) {
-  return {
-    fetchRepos: function(url) {
-      dispatch(fetchRepos(url));
-    }
-  };
-}
+const mapDispatchToProps = (dispatch, url = default_url) => ({
+  fetchRepos: (url) => {
+    dispatch(fetchRepos(url));
+  }
+})
 
-function mapStateToProps(state) {
-  return {
-    repos: state.repos,
-  };
-}
+const mapStateToProps = (state) => ({
+  repos: state.repos,
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(List);

@@ -6,7 +6,7 @@ const INITIAL_STATE = {
   error: undefined
 };
 
-function reposReducer(state = INITIAL_STATE, action) {
+const reposReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case 'FETCH_REPOS_REQUEST':
       return Object.assign({}, state, {

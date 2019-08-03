@@ -1,4 +1,4 @@
-export default function abbreviateNumber(value) {
+const abbreviateNumber = (value) => {
   var new_value = value;
   if (value >= 1000) {
       var suffixes = ["", "k", "m", "b","t"];
@@ -16,3 +16,5 @@ export default function abbreviateNumber(value) {
   }
   return new_value;
 }
+
+export default abbreviateNumber;
