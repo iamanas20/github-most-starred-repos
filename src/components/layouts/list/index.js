@@ -17,37 +17,37 @@ class List extends Component {
     this.props.fetchRepos(url);
   }
 
-	render() {
-		return(
-			<div className="list">
-				{
-					(this.props.repos.repos.repos !== undefined) &&
-					this.props.repos.repos.repos.map((item, i) => 
-						<Row 
-							key={i}
-							avatar={item.owner.avatar_url}
-							title={item.name} 
-							description={item.description}
-							stars={abbreviateNumber(item.stargazers_count)}
-							issues={abbreviateNumber(item.open_issues_count)}
-							date={moment(item.created_at, "YYYYMMDD").fromNow()}
-							owner={item.owner.login}
-						/>
-					)
-				}
-				<div className="pagination">
-					{
-						(this.props.repos.repos.headers !== undefined) && 
-						getLinks(this.props.repos.repos.headers.get('link')).map((item, i) => 
-							<div onClick={e => this.props.fetchRepos(item.url)} key={i}>
-								{optimizeHeadersTitle(item.title)}
-							</div>
-						)
-					}
-				</div>
-			</div>
-		)
-	}
+  render() {
+    return(
+      <div className="list">
+        {
+          (this.props.repos.repos.repos !== undefined) &&
+          this.props.repos.repos.repos.map((item, i) => 
+            <Row 
+              key={i}
+              avatar={item.owner.avatar_url}
+              title={item.name} 
+              description={item.description}
+              stars={abbreviateNumber(item.stargazers_count)}
+              issues={abbreviateNumber(item.open_issues_count)}
+              date={moment(item.created_at, "YYYYMMDD").fromNow()}
+              owner={item.owner.login}
+            />
+          )
+        }
+        <div className="pagination">
+          {
+            (this.props.repos.repos.headers !== undefined) && 
+            getLinks(this.props.repos.repos.headers.get('link')).map((item, i) => 
+              <div onClick={e => this.props.fetchRepos(item.url)} key={i}>
+                {optimizeHeadersTitle(item.title)}
+              </div>
+            )
+          }
+        </div>
+      </div>
+    )
+  }
 }
 
 function mapDispatchToProps(dispatch, url = default_url) {
