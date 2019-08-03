@@ -9,9 +9,9 @@ export default function abbreviateNumber(value) {
 				var dotLessShortValue = (shortValue + '').replace(/[^a-zA-Z 0-9]+/g,'');
 				if (dotLessShortValue.length <= 2) { break; }
 			}
-			if (shortValue % 1 !== 0)  {
+			if (shortValue % 1 !== 0) {
 				shortValue = shortValue.toFixed(1)
-			};
+			}
 		newValue = shortValue+suffixes[suffixNum];
 	}
 	return newValue;
