@@ -1,5 +1,3 @@
-[![star this repo](http://githubbadges.com/star.svg?user=boennemann&repo=badges&style=flat)](https://github.com/boennemann/badges)
-[![fork this repo](http://githubbadges.com/fork.svg?user=boennemann&repo=badges&style=flat)](https://github.com/boennemann/badges/fork)
 
 ## Most Starred Repos
 
