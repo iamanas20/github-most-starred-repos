@@ -8,8 +8,11 @@
     text-align: center;
 
     > * {
-      
+      cursor: pointer;
       display: inline-block;
+      padding: 10px 15px;
+      background: rgb(230, 230, 230);
+      border-radius: 6px;
       &:not(:last-child){
         margin-right: 50px;
       }

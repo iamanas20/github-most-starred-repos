@@ -9,9 +9,11 @@ import getDate from './getDate';
 import optimizeHeadersTitle from './optimizeHeadersTitle';
 var moment = require('moment');
 
+const default_url = "https://api.github.com/search/repositories?q=created:>" + getDate() + "&sort=stars&order=desc";
+
 class List extends Component {
 
-  componentDidMount(url = "https://api.github.com/search/repositories?q=created:>" + getDate() + "&sort=stars&order=desc") {
+  componentDidMount(url = default_url) {
     this.props.fetchRepos(url);
   }
 
@@ -37,9 +39,9 @@ class List extends Component {
 					{
 						(this.props.repos.repos.headers !== undefined) && 
 						getLinks(this.props.repos.repos.headers.get('link')).map((item, i) => 
-							<button onClick={e => this.props.fetchRepos(item.url)} key={i}>
+							<div onClick={e => this.props.fetchRepos(item.url)} key={i}>
 								{optimizeHeadersTitle(item.title)}
-							</button>
+							</div>
 						)
 					}
 				</div>
@@ -48,7 +50,7 @@ class List extends Component {
 	}
 }
 
-function mapDispatchToProps(dispatch, url = "https://api.github.com/search/repositories?q=created:>" + getDate() + "&sort=stars&order=desc") {
+function mapDispatchToProps(dispatch, url = default_url) {
   return {
     fetchRepos: function(url) {
       dispatch(fetchRepos(url));

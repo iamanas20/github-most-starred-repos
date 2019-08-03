@@ -3,7 +3,7 @@ import { combineReducers } from 'redux';
 import repos from './reducers';
 
 const rootReducer = combineReducers({
-    repos,
+	repos,
 });
 
 export default rootReducer;
