@@ -2,7 +2,7 @@
 ## Most Starred Repos
 
 This project gets you the most starred GitHub repositories that were created in the last 30 days!
-![Imgur Image](https://i.imgur.com/shL08o7.jpg)
+![Imgur Image](https://i.imgur.com/zolbRxi.jpg)
 
 ## Used Technologies And Packages
 
@@ -26,7 +26,9 @@ And you are good to go!
 
 ## How To Run
 
+```
 npm start
+```
 
 Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
