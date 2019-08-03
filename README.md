@@ -2,6 +2,8 @@
 
 This project gets you the most starred GitHub repositories that were created in the last 30 days!
 
+!(image)[https://imgur.com/a/shL08o7]
+
 ## Used Library
 
 React.js : One of the best JS libraries, a few things that makes it great for me; JSX is one of the greatest features that not only makes ReactJS easy but fun too, Components allow you to break down complex UI. The idea of components is what makes ReactJS unique. It uses Virtual DOM that makes the app fast. and so on!
